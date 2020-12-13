@@ -2702,7 +2702,8 @@ Void TEncSearch::estIntraPredChromaQT(TComDataCU *pcCU,
     //----- init mode list -----
     UInt uiMinMode = 0;
     UInt uiModeList[NUM_CHROMA_MODE];
-    pcCU->getAllowedChromaDir(0, uiModeList);
+    // pcCU->getAllowedChromaDir(0, uiModeList);
+    pcCU->getAllowedChromaDir32(0, uiModeList);
     UInt uiMaxMode = NUM_CHROMA_MODE;
 
     //----- check chroma modes -----

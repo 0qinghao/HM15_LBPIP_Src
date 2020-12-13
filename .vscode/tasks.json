@@ -3,10 +3,11 @@
     "tasks": [
         {
             "type": "shell",
-            "label": "编码器调试 build for debug",
+            "label": "调试 build for debug",
             "command": "make",
             "args": [
-                "debug_enc_only"
+                "-j8",
+                "debug"
             ],
             "options": {
                 "cwd": "${workspaceFolder}/build/linux"
@@ -21,6 +22,7 @@
             "label": "构建 release",
             "command": "make",
             "args": [
+                "-j8",
                 "release"
             ],
             "options": {
