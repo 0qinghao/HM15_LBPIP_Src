@@ -81,7 +81,7 @@
 
 #define SBH_THRESHOLD 4 ///< I0156: value of the fixed SBH controlling threshold
 
-#define SEQUENCE_LEVEL_LOSSLESS 0 ///< H0530: used only for sequence or frame-level lossless coding
+#define SEQUENCE_LEVEL_LOSSLESS 1 ///< H0530: used only for sequence or frame-level lossless coding
 
 #define DISABLING_CLIP_FOR_BIPREDME 1 ///< Ticket #175
 
@@ -100,7 +100,7 @@
 #define MAX_NUM_SPS 16
 #define MAX_NUM_PPS 64
 
-#define RDOQ_CHROMA_LAMBDA 1 ///< F386: weighting of chroma for RDOQ
+#define RDOQ_CHROMA_LAMBDA 0 ///< F386: weighting of chroma for RDOQ
 
 #define MIN_SCAN_POS_CROSS 4
 
@@ -109,13 +109,13 @@
 #define MLS_GRP_NUM 64 ///< G644 : Max number of coefficient groups, max(16, 64)
 #define MLS_CG_SIZE 4  ///< G644 : Coefficient group size of 4x4
 
-#define ADAPTIVE_QP_SELECTION 1 ///< G382: Adaptive reconstruction levels, non-normative part for adaptive QP selection
+#define ADAPTIVE_QP_SELECTION 0 ///< G382: Adaptive reconstruction levels, non-normative part for adaptive QP selection
 #if ADAPTIVE_QP_SELECTION
 #define ARL_C_PRECISION 7 ///< G382: 7-bit arithmetic precision
 #define LEVEL_RANGE 30    ///< G382: max coefficient level in statistics collection
 #endif
 
-#define HHI_RQT_INTRA_SPEEDUP 1     ///< tests one best mode with full rqt
+#define HHI_RQT_INTRA_SPEEDUP 0     ///< tests one best mode with full rqt
 #define HHI_RQT_INTRA_SPEEDUP_MOD 0 ///< tests two best modes with full rqt
 
 #if HHI_RQT_INTRA_SPEEDUP_MOD && !HHI_RQT_INTRA_SPEEDUP
@@ -155,9 +155,9 @@
 #define NUM_CHROMA_MODE 32 // total number of chroma modes
 #define DM_CHROMA_IDX 36   // chroma mode index for derived from luma intra mode
 
-#define FAST_UDI_USE_MPM 1
+#define FAST_UDI_USE_MPM 0
 
-#define RDO_WITHOUT_DQP_BITS 0 ///< Disable counting dQP bits in RDO-based mode decision
+#define RDO_WITHOUT_DQP_BITS 1 ///< Disable counting dQP bits in RDO-based mode decision
 
 #define FULL_NBIT 0 ///< When enabled, compute costs using full sample bitdepth.  When disabled, compute costs as if it is 8-bit source video.
 #if FULL_NBIT
@@ -175,8 +175,8 @@
 
 #define REG_DCT 65535
 
-#define AMP_SAD 1         ///< dedicated SAD functions for AMP
-#define AMP_ENC_SPEEDUP 1 ///< encoder only speed-up by AMP mode skipping
+#define AMP_SAD 0         ///< dedicated SAD functions for AMP
+#define AMP_ENC_SPEEDUP 0 ///< encoder only speed-up by AMP mode skipping
 #if AMP_ENC_SPEEDUP
 #define AMP_MRG 1 ///< encoder only force merge for AMP partition (no motion search for AMP)
 #endif

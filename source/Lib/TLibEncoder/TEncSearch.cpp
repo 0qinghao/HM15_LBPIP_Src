@@ -2598,65 +2598,67 @@ Void TEncSearch::estIntraPredQT(TComDataCU *pcCU,
         ::memcpy(pcCU->getTransformSkip(TEXT_CHROMA_U) + uiPartOffset, m_puhQTTempTransformSkipFlag[1], uiQPartNum * sizeof(UChar));
         ::memcpy(pcCU->getTransformSkip(TEXT_CHROMA_V) + uiPartOffset, m_puhQTTempTransformSkipFlag[2], uiQPartNum * sizeof(UChar));
         //--- set reconstruction for next intra prediction blocks ---
-        if (uiPU != uiNumPU - 1)
-        {
-            Bool bSkipChroma = false;
-            Bool bChromaSame = false;
-            UInt uiLog2TrSize = g_aucConvertToBit[pcCU->getSlice()->getSPS()->getMaxCUWidth() >> (pcCU->getDepth(0) + uiInitTrDepth)] + 2;
-            if (!bLumaOnly && uiLog2TrSize == 2)
-            {
-                assert(uiInitTrDepth > 0);
-                bSkipChroma = (uiPU != 0);
-                bChromaSame = true;
-            }
+        // 无损时可以不重建
+        // if (uiPU != uiNumPU - 1)
+        // {
+        //     Bool bSkipChroma = false;
+        //     Bool bChromaSame = false;
+        //     UInt uiLog2TrSize = g_aucConvertToBit[pcCU->getSlice()->getSPS()->getMaxCUWidth() >> (pcCU->getDepth(0) + uiInitTrDepth)] + 2;
+        //     if (!bLumaOnly && uiLog2TrSize == 2)
+        //     {
+        //         assert(uiInitTrDepth > 0);
+        //         bSkipChroma = (uiPU != 0);
+        //         bChromaSame = true;
+        //     }
 
-            UInt uiCompWidth = pcCU->getWidth(0) >> uiInitTrDepth;
-            UInt uiCompHeight = pcCU->getHeight(0) >> uiInitTrDepth;
-            UInt uiZOrder = pcCU->getZorderIdxInCU() + uiPartOffset;
-            Pel *piDes = pcCU->getPic()->getPicYuvRec()->getLumaAddr(pcCU->getAddr(), uiZOrder);
-            UInt uiDesStride = pcCU->getPic()->getPicYuvRec()->getStride();
-            Pel *piSrc = pcRecoYuv->getLumaAddr(uiPartOffset);
-            UInt uiSrcStride = pcRecoYuv->getStride();
-            for (UInt uiY = 0; uiY < uiCompHeight; uiY++, piSrc += uiSrcStride, piDes += uiDesStride)
-            {
-                for (UInt uiX = 0; uiX < uiCompWidth; uiX++)
-                {
-                    piDes[uiX] = piSrc[uiX];
-                }
-            }
-            if (!bLumaOnly && !bSkipChroma)
-            {
-                if (!bChromaSame)
-                {
-                    uiCompWidth >>= 1;
-                    uiCompHeight >>= 1;
-                }
-                piDes = pcCU->getPic()->getPicYuvRec()->getCbAddr(pcCU->getAddr(), uiZOrder);
-                uiDesStride = pcCU->getPic()->getPicYuvRec()->getCStride();
-                piSrc = pcRecoYuv->getCbAddr(uiPartOffset);
-                uiSrcStride = pcRecoYuv->getCStride();
-                for (UInt uiY = 0; uiY < uiCompHeight; uiY++, piSrc += uiSrcStride, piDes += uiDesStride)
-                {
-                    for (UInt uiX = 0; uiX < uiCompWidth; uiX++)
-                    {
-                        piDes[uiX] = piSrc[uiX];
-                    }
-                }
-                piDes = pcCU->getPic()->getPicYuvRec()->getCrAddr(pcCU->getAddr(), uiZOrder);
-                piSrc = pcRecoYuv->getCrAddr(uiPartOffset);
-                for (UInt uiY = 0; uiY < uiCompHeight; uiY++, piSrc += uiSrcStride, piDes += uiDesStride)
-                {
-                    for (UInt uiX = 0; uiX < uiCompWidth; uiX++)
-                    {
-                        piDes[uiX] = piSrc[uiX];
-                    }
-                }
-            }
-        }
+        //     UInt uiCompWidth = pcCU->getWidth(0) >> uiInitTrDepth;
+        //     UInt uiCompHeight = pcCU->getHeight(0) >> uiInitTrDepth;
+        //     UInt uiZOrder = pcCU->getZorderIdxInCU() + uiPartOffset;
+        //     Pel *piDes = pcCU->getPic()->getPicYuvRec()->getLumaAddr(pcCU->getAddr(), uiZOrder);
+        //     UInt uiDesStride = pcCU->getPic()->getPicYuvRec()->getStride();
+        //     Pel *piSrc = pcRecoYuv->getLumaAddr(uiPartOffset);
+        //     UInt uiSrcStride = pcRecoYuv->getStride();
+        //     for (UInt uiY = 0; uiY < uiCompHeight; uiY++, piSrc += uiSrcStride, piDes += uiDesStride)
+        //     {
+        //         for (UInt uiX = 0; uiX < uiCompWidth; uiX++)
+        //         {
+        //             piDes[uiX] = piSrc[uiX];
+        //         }
+        //     }
+        //     if (!bLumaOnly && !bSkipChroma)
+        //     {
+        //         if (!bChromaSame)
+        //         {
+        //             uiCompWidth >>= 1;
+        //             uiCompHeight >>= 1;
+        //         }
+        //         piDes = pcCU->getPic()->getPicYuvRec()->getCbAddr(pcCU->getAddr(), uiZOrder);
+        //         uiDesStride = pcCU->getPic()->getPicYuvRec()->getCStride();
+        //         piSrc = pcRecoYuv->getCbAddr(uiPartOffset);
+        //         uiSrcStride = pcRecoYuv->getCStride();
+        //         for (UInt uiY = 0; uiY < uiCompHeight; uiY++, piSrc += uiSrcStride, piDes += uiDesStride)
+        //         {
+        //             for (UInt uiX = 0; uiX < uiCompWidth; uiX++)
+        //             {
+        //                 piDes[uiX] = piSrc[uiX];
+        //             }
+        //         }
+        //         piDes = pcCU->getPic()->getPicYuvRec()->getCrAddr(pcCU->getAddr(), uiZOrder);
+        //         piSrc = pcRecoYuv->getCrAddr(uiPartOffset);
+        //         for (UInt uiY = 0; uiY < uiCompHeight; uiY++, piSrc += uiSrcStride, piDes += uiDesStride)
+        //         {
+        //             for (UInt uiX = 0; uiX < uiCompWidth; uiX++)
+        //             {
+        //                 piDes[uiX] = piSrc[uiX];
+        //             }
+        //         }
+        //     }
+        // }
 
         //=== update PU data ====
         pcCU->setLumaIntraDirSubParts(uiBestPUMode, uiPartOffset, uiDepth + uiInitTrDepth);
-        pcCU->copyToPic(uiDepth, uiPU, uiInitTrDepth);
+        // 同上
+        // pcCU->copyToPic(uiDepth, uiPU, uiInitTrDepth);
     } // PU loop
 
     if (uiNumPU > 1)
@@ -2682,9 +2684,10 @@ Void TEncSearch::estIntraPredQT(TComDataCU *pcCU,
     //===== reset context models =====
     m_pcRDGoOnSbacCoder->load(m_pppcRDSbacCoder[uiDepth][CI_CURR_BEST]);
 
+    // 无损时失真是 0, 可以跳过不算 (初始化的时候已经把这个成员变量设为 0 了)
     //===== set distortion (rate and r-d costs are determined later) =====
-    ruiDistC = uiOverallDistC;
-    pcCU->getTotalDistortion() = uiOverallDistY + uiOverallDistC;
+    // ruiDistC = uiOverallDistC;
+    // pcCU->getTotalDistortion() = uiOverallDistY + uiOverallDistC;
 }
 
 Void TEncSearch::estIntraPredChromaQT(TComDataCU *pcCU,

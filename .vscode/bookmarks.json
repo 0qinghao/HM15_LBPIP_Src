@@ -3,17 +3,17 @@
 		"path": "$ROOTPATH$/source/Lib/TLibEncoder/TEncCu.cpp",
 		"bookmarks": [
 			{
-				"line": 259,
+				"line": 281,
 				"column": 11,
 				"label": ""
 			},
 			{
-				"line": 657,
+				"line": 679,
 				"column": 25,
 				"label": ""
 			},
 			{
-				"line": 661,
+				"line": 683,
 				"column": 15,
 				"label": ""
 			}
@@ -65,6 +65,21 @@
 			{
 				"line": 2529,
 				"column": 14,
+				"label": ""
+			},
+			{
+				"line": 2600,
+				"column": 18,
+				"label": ""
+			},
+			{
+				"line": 2659,
+				"column": 13,
+				"label": ""
+			},
+			{
+				"line": 2686,
+				"column": 22,
 				"label": ""
 			}
 		]
