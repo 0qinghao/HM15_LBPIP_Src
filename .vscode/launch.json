@@ -10,8 +10,8 @@
                 "-c",
                 "${workspaceFolder}/cfg/encoder_intra_main_LL.cfg",
                 "-c",
-                "${workspaceFolder}/cfg/per-sequence/wsl_BasketballPass.cfg"
-                // "${workspaceFolder}/cfg/per-sequence/wsl_SlideEditing.cfg"
+                // "${workspaceFolder}/cfg/per-sequence/wsl_BasketballPass.cfg"
+                "${workspaceFolder}/cfg/per-sequence/wsl_SlideEditing.cfg"
                 // "${workspaceFolder}/cfg/per-sequence/wsl_ChinaSpeed.cfg"
             ],
             "stopAtEntry": false,

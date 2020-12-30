@@ -2402,8 +2402,9 @@ Void TEncSearch::estIntraPredQT(TComDataCU *pcCU,
         //===== init pattern for luma prediction =====
         Bool bAboveAvail = false;
         Bool bLeftAvail = false;
-        pcCU->getPattern()->initPattern(pcCU, uiInitTrDepth, uiPartOffset);
-        pcCU->getPattern()->initAdiPattern(pcCU, uiPartOffset, uiInitTrDepth, m_piYuvExt, m_iYuvExtStride, m_iYuvExtHeight, bAboveAvail, bLeftAvail);
+        // 省略粗筛过程中的获取参考像素
+        // pcCU->getPattern()->initPattern(pcCU, uiInitTrDepth, uiPartOffset);
+        // pcCU->getPattern()->initAdiPattern(pcCU, uiPartOffset, uiInitTrDepth, m_piYuvExt, m_iYuvExtStride, m_iYuvExtHeight, bAboveAvail, bLeftAvail);
 
         //===== determine set of modes to be tested (using prediction signal only) =====
         Int numModesAvailable = 35; //total number of Intra modes
