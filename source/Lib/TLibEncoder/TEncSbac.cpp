@@ -654,7 +654,7 @@ Void TEncSbac::codeIntraDirChroma(TComDataCU *pcCU, UInt uiAbsPartIdx)
         // }
         // m_pcBinIf->encodeBin(1, m_cCUChromaPredSCModel.get(0, 0, 0));
 
-        m_pcBinIf->encodeBinsEP(uiIntraDirChroma, 5);
+        m_pcBinIf->encodeBinsEP(uiIntraDirChroma, DIR_BITS);
     }
     return;
 }

@@ -152,8 +152,9 @@
 #define HOR_IDX 10 // index for intra HORIZONTAL mode
 #define DC_IDX 1   // index for intra DC mode
 // #define NUM_CHROMA_MODE 5 // total number of chroma modes
-#define NUM_CHROMA_MODE 32 // total number of chroma modes
-#define DM_CHROMA_IDX 36   // chroma mode index for derived from luma intra mode
+#define NUM_CHROMA_MODE 35 // total number of chroma modes
+#define DIR_BITS 6
+#define DM_CHROMA_IDX 36 // chroma mode index for derived from luma intra mode
 
 #define FAST_UDI_USE_MPM 0
 
