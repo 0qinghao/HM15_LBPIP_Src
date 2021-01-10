@@ -584,49 +584,55 @@ Void TEncSbac::codeIntraDirLumaAng(TComDataCU *pcCU, UInt absPartIdx, Bool isMul
     PartSize mode = pcCU->getPartitionSize(absPartIdx);
     UInt partNum = isMultiple ? (mode == SIZE_NxN ? 4 : 1) : 1;
     UInt partOffset = (pcCU->getPic()->getNumPartInCU() >> (pcCU->getDepth(absPartIdx) << 1)) >> 2;
+    // for (j = 0; j < partNum; j++)
+    // {
+    //     dir[j] = pcCU->getLumaIntraDir(absPartIdx + partOffset * j);
+    //     predNum[j] = pcCU->getIntraDirLumaPredictor(absPartIdx + partOffset * j, preds[j]);
+    //     for (UInt i = 0; i < predNum[j]; i++)
+    //     {
+    //         if (dir[j] == preds[j][i])
+    //         {
+    //             predIdx[j] = i;
+    //         }
+    //     }
+    //     m_pcBinIf->encodeBin((predIdx[j] != -1) ? 1 : 0, m_cCUIntraPredSCModel.get(0, 0, 0));
+    // }
+    // for (j = 0; j < partNum; j++)
+    // {
+    //     if (predIdx[j] != -1)
+    //     {
+    //         m_pcBinIf->encodeBinEP(predIdx[j] ? 1 : 0);
+    //         if (predIdx[j])
+    //         {
+    //             m_pcBinIf->encodeBinEP(predIdx[j] - 1);
+    //         }
+    //     }
+    //     else
+    //     {
+    //         if (preds[j][0] > preds[j][1])
+    //         {
+    //             std::swap(preds[j][0], preds[j][1]);
+    //         }
+    //         if (preds[j][0] > preds[j][2])
+    //         {
+    //             std::swap(preds[j][0], preds[j][2]);
+    //         }
+    //         if (preds[j][1] > preds[j][2])
+    //         {
+    //             std::swap(preds[j][1], preds[j][2]);
+    //         }
+    //         for (Int i = (predNum[j] - 1); i >= 0; i--)
+    //         {
+    //             dir[j] = dir[j] > preds[j][i] ? dir[j] - 1 : dir[j];
+    //         }
+    //         m_pcBinIf->encodeBinsEP(dir[j], 5);
+    //     }
+    // }
+
     for (j = 0; j < partNum; j++)
     {
         dir[j] = pcCU->getLumaIntraDir(absPartIdx + partOffset * j);
-        predNum[j] = pcCU->getIntraDirLumaPredictor(absPartIdx + partOffset * j, preds[j]);
-        for (UInt i = 0; i < predNum[j]; i++)
-        {
-            if (dir[j] == preds[j][i])
-            {
-                predIdx[j] = i;
-            }
-        }
-        m_pcBinIf->encodeBin((predIdx[j] != -1) ? 1 : 0, m_cCUIntraPredSCModel.get(0, 0, 0));
-    }
-    for (j = 0; j < partNum; j++)
-    {
-        if (predIdx[j] != -1)
-        {
-            m_pcBinIf->encodeBinEP(predIdx[j] ? 1 : 0);
-            if (predIdx[j])
-            {
-                m_pcBinIf->encodeBinEP(predIdx[j] - 1);
-            }
-        }
-        else
-        {
-            if (preds[j][0] > preds[j][1])
-            {
-                std::swap(preds[j][0], preds[j][1]);
-            }
-            if (preds[j][0] > preds[j][2])
-            {
-                std::swap(preds[j][0], preds[j][2]);
-            }
-            if (preds[j][1] > preds[j][2])
-            {
-                std::swap(preds[j][1], preds[j][2]);
-            }
-            for (Int i = (predNum[j] - 1); i >= 0; i--)
-            {
-                dir[j] = dir[j] > preds[j][i] ? dir[j] - 1 : dir[j];
-            }
-            m_pcBinIf->encodeBinsEP(dir[j], 5);
-        }
+        m_pcBinIf->encodeBinsEP(dir[j], DIR_BITS);
     }
     return;
 }
