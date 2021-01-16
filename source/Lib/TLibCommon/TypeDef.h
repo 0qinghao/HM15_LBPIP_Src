@@ -85,8 +85,8 @@
 
 #define DISABLING_CLIP_FOR_BIPREDME 1 ///< Ticket #175
 
-#define C1FLAG_NUMBER 8       // maximum number of largerThan1 flag coded in one chunk :  16 in HM5
-#define C2FLAG_NUMBER 1       // maximum number of largerThan2 flag coded in one chunk:  16 in HM5
+#define C1FLAG_NUMBER 0       // maximum number of largerThan1 flag coded in one chunk :  16 in HM5
+#define C2FLAG_NUMBER 0       // maximum number of largerThan2 flag coded in one chunk:  16 in HM5
 #define SAO_ENCODING_CHOICE 1 ///< I0184: picture early termination
 #if SAO_ENCODING_CHOICE
 #define SAO_ENCODING_RATE 0.75
@@ -152,8 +152,9 @@
 #define HOR_IDX 10 // index for intra HORIZONTAL mode
 #define DC_IDX 1   // index for intra DC mode
 // #define NUM_CHROMA_MODE 5 // total number of chroma modes
-#define NUM_CHROMA_MODE 32 // total number of chroma modes
-#define DM_CHROMA_IDX 36   // chroma mode index for derived from luma intra mode
+#define NUM_CHROMA_MODE 35 // total number of chroma modes
+#define DIR_BITS 6
+#define DM_CHROMA_IDX 36 // chroma mode index for derived from luma intra mode
 
 #define FAST_UDI_USE_MPM 0
 
