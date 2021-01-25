@@ -85,8 +85,8 @@
 
 #define DISABLING_CLIP_FOR_BIPREDME 1 ///< Ticket #175
 
-#define C1FLAG_NUMBER 0       // maximum number of largerThan1 flag coded in one chunk :  16 in HM5
-#define C2FLAG_NUMBER 0       // maximum number of largerThan2 flag coded in one chunk:  16 in HM5
+#define C1FLAG_NUMBER 16      // maximum number of largerThan1 flag coded in one chunk :  16 in HM5
+#define C2FLAG_NUMBER 1       // maximum number of largerThan2 flag coded in one chunk:  16 in HM5
 #define SAO_ENCODING_CHOICE 1 ///< I0184: picture early termination
 #if SAO_ENCODING_CHOICE
 #define SAO_ENCODING_RATE 0.75
