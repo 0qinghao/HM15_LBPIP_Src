@@ -1,115 +1,50 @@
 [
 	{
-		"path": "$ROOTPATH$/source/Lib/TLibEncoder/TEncCu.cpp",
+		"path": "$ROOTPATH$/source/Lib/TLibEncoder/TEncEntropy.cpp",
 		"bookmarks": [
 			{
-				"line": 281,
-				"column": 11,
+				"line": 274,
+				"column": 55,
 				"label": ""
 			},
 			{
-				"line": 679,
-				"column": 25,
+				"line": 278,
+				"column": 55,
 				"label": ""
 			},
 			{
-				"line": 683,
-				"column": 15,
-				"label": ""
-			}
-		]
-	},
-	{
-		"path": "$ROOTPATH$/source/Lib/TLibEncoder/TEncGOP.cpp",
-		"bookmarks": [
-			{
-				"line": 968,
-				"column": 17,
+				"line": 334,
+				"column": 52,
 				"label": ""
 			},
 			{
-				"line": 1035,
-				"column": 8,
+				"line": 361,
+				"column": 42,
 				"label": ""
 			},
 			{
-				"line": 1473,
-				"column": 34,
-				"label": ""
-			}
-		]
-	},
-	{
-		"path": "$ROOTPATH$/source/Lib/TLibEncoder/TEncSlice.cpp",
-		"bookmarks": [
-			{
-				"line": 1009,
-				"column": 13,
+				"line": 365,
+				"column": 42,
 				"label": ""
 			},
 			{
-				"line": 1020,
-				"column": 26,
+				"line": 377,
+				"column": 36,
 				"label": ""
 			},
 			{
-				"line": 1332,
-				"column": 26,
-				"label": ""
-			}
-		]
-	},
-	{
-		"path": "$ROOTPATH$/source/Lib/TLibEncoder/TEncSearch.cpp",
-		"bookmarks": [
-			{
-				"line": 2530,
-				"column": 14,
+				"line": 381,
+				"column": 36,
 				"label": ""
 			},
 			{
-				"line": 2601,
-				"column": 18,
+				"line": 635,
+				"column": 0,
 				"label": ""
 			},
 			{
-				"line": 2660,
-				"column": 13,
-				"label": ""
-			},
-			{
-				"line": 2687,
-				"column": 22,
-				"label": ""
-			}
-		]
-	},
-	{
-		"path": "$ROOTPATH$/source/Lib/TLibCommon/TComPattern.cpp",
-		"bookmarks": [
-			{
-				"line": 177,
-				"column": 24,
-				"label": ""
-			},
-			{
-				"line": 608,
-				"column": 21,
-				"label": ""
-			},
-			{
-				"line": 615,
-				"column": 31,
-				"label": ""
-			}
-		]
-	},
-	{
-		"path": "$ROOTPATH$/运行过程.md",
-		"bookmarks": [
-			{
-				"line": 9,
-				"column": 44,
+				"line": 636,
+				"column": 45,
 				"label": ""
 			}
 		]

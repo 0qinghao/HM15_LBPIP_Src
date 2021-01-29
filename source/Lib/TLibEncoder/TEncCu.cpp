@@ -1083,7 +1083,7 @@ Void TEncCu::xEncodeCU(TComDataCU *pcCU, UInt uiAbsPartIdx, UInt uiDepth)
 
     // Encode Coefficients
     Bool bCodeDQP = getdQPFlag();
-    m_pcEntropyCoder->encodeCoeff(pcCU, uiAbsPartIdx, uiDepth, pcCU->getWidth(uiAbsPartIdx), pcCU->getHeight(uiAbsPartIdx), bCodeDQP);
+    m_pcEntropyCoder->encodeCoeffwr(pcCU, uiAbsPartIdx, uiDepth, pcCU->getWidth(uiAbsPartIdx), pcCU->getHeight(uiAbsPartIdx), bCodeDQP);
     setdQPFlag(bCodeDQP);
 
     // --- write terminating bit ---
