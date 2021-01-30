@@ -538,7 +538,7 @@ Void TEncEntropy::xEncodeTransformwr(TComDataCU *pcCU, UInt offsetLuma, UInt off
                 {
                     sae += abs(*(pcCU->getCoeffY() + offsetLuma + i));
                 }
-                printf("块大小=%d,残差和=%d\n", trWidth, sae);
+                printf("y,块大小=%d,残差和=%d\n", trWidth, sae);
             }
         }
         if (uiLog2TrafoSize > 2)
@@ -554,7 +554,7 @@ Void TEncEntropy::xEncodeTransformwr(TComDataCU *pcCU, UInt offsetLuma, UInt off
                     {
                         sae += abs(*(pcCU->getCoeffCb() + offsetChroma + i));
                     }
-                    printf("块大小=%d,残差和=%d\n", trWidth, sae);
+                    printf("u,块大小=%d,残差和=%d\n", trWidth, sae);
                 }
             }
             if (cbfV)
@@ -566,7 +566,7 @@ Void TEncEntropy::xEncodeTransformwr(TComDataCU *pcCU, UInt offsetLuma, UInt off
                     {
                         sae += abs(*(pcCU->getCoeffCr() + offsetChroma + i));
                     }
-                    printf("块大小=%d,残差和=%d\n", trWidth, sae);
+                    printf("v,块大小=%d,残差和=%d\n", trWidth, sae);
                 }
             }
         }
@@ -586,7 +586,7 @@ Void TEncEntropy::xEncodeTransformwr(TComDataCU *pcCU, UInt offsetLuma, UInt off
                         {
                             sae += abs(*(pcCU->getCoeffCb() + m_uiBakChromaOffset + i));
                         }
-                        printf("块大小=%d,残差和=%d\n", trWidth, sae);
+                        printf("u,块大小=%d,残差和=%d\n", trWidth, sae);
                     }
                 }
                 if (cbfV)
@@ -598,7 +598,7 @@ Void TEncEntropy::xEncodeTransformwr(TComDataCU *pcCU, UInt offsetLuma, UInt off
                         {
                             sae += abs(*(pcCU->getCoeffCr() + m_uiBakChromaOffset + i));
                         }
-                        printf("块大小=%d,残差和=%d\n", trWidth, sae);
+                        printf("v,块大小=%d,残差和=%d\n", trWidth, sae);
                     }
                 }
             }
